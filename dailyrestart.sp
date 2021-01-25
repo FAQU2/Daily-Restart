@@ -24,12 +24,11 @@ public void OnPluginStart()
 
 public Action Timer_Restart(Handle timer)
 {
+	char time[32];
+	char restart[32];
 	int timestamp = GetTime();
 	
-	char time[32];
 	FormatTime(time, sizeof(time), "%H:%M", timestamp);
-	
-	char restart[32];
 	gc_Restart.GetString(restart, sizeof(restart));
 	
 	if (StrEqual(time, restart))
@@ -41,9 +40,9 @@ public Action Timer_Restart(Handle timer)
 
 public Action Command_Systemtime(int client, int args)
 {
+	char time[32];
 	int timestamp = GetTime();
 	
-	char time[32];
 	FormatTime(time, sizeof(time), "%H:%M", timestamp);
 	
 	ReplyToCommand(client, "System Time: %s", time);
